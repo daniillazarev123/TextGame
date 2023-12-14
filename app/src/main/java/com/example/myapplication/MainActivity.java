@@ -66,5 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 + story.current_situation.subject + "==============\n");
         tvStory.append(story.current_situation.text);
         etAnswer.setText("");
+        //привет
     }
 }
