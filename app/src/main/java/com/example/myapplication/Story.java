@@ -20,8 +20,16 @@ public class Story {
         start_story.direction[1] = new Situation(
                 "совещание, босс доволен",
                 "Сегодня будет совещание, меня неожиданно вызвали,"
-                        + "есть сведения что \n босс доволен сегодняшней сделкой.",
-                0, 1, 100, 0);
+                        + "есть сведения что \n босс доволен сегодняшней сделкой." +
+                        "(1) Придти \n" +
+                        "(2) не приходить \n",
+                2, 1, 100, 0);
+        start_story.direction[1].direction[0] = new Situation("Вы пришли", "Вы преуспели", 0, 10, 1000, 1000);
+        current_situation = start_story;
+
+        start_story.direction[1].direction[1] = new Situation("Вы не пришли ", "Вы не преуспели ", 0, 10, 10, 12);
+        current_situation = start_story;
+
         start_story.direction[2] = new Situation(
                 "мой первый лояльный клиент",
                 "Мой первый клиент доволен скоростью и качеством "
