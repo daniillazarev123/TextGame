@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Character manager; // персонаж
     private Story story; // история (сюжет)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +26,23 @@ public class MainActivity extends AppCompatActivity {
         // управления
         updateStatus();
     }
+
     // метод для перехода на нужную ветку развития
     private void go(int i) {
         story.go(i + 1);
-        updateStatus();
-        // если история закончилась, выводим на экран поздравление
-        if (story.isEnd())
-            Toast.makeText(this, "Игра закончена!", Toast.LENGTH_LONG).show();
+        updateStatus();    // если история закончилась, выводим на экран поздравление
+        if (story.isEnd()) {        // загрузить следующую историю
+            Story nextStory = story.loadNextStory();
+            if (nextStory != null) {
+                story = nextStory;            // обновить статус и интерфейс для новой истории
+                updateStatus();
+                Toast.makeText(this, "Новая история началась!", Toast.LENGTH_LONG).show();
+            } else {            // выполнить логику завершения игры или начала заново, если это последняя история
+                Toast.makeText(this, "Игра окончилась!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
+
     // в этом методе размещаем всю информацию, специфичную для текущей
     // ситуации на форме приложения, а также размещаем кнопки, которые
     // позволят пользователю выбрать дальнейший ход событий
