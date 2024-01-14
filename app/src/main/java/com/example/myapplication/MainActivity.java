@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,13 +52,10 @@ public class MainActivity extends AppCompatActivity {
     private void updateStatus() {
         // не забываем обновить репутацию в соответствии с новым
         // состоянием дел
-        manager.A += story.current_situation.dA;
         manager.K += story.current_situation.dK;
-        manager.R += story.current_situation.dR;
         // выводим статус на форму
         ((TextView) findViewById(R.id.status)).
-                setText("Карьера:" + manager.K +
-                        "\nАктивы:" + manager.A + "\nРепутация:" + manager.R);
+                setText("Создатель игры:Даниил Лазарев ");
         // аналогично для заголовка и описания ситуации
         ((TextView) findViewById(R.id.title)).
                 setText(story.current_situation.subject);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         ((LinearLayout) findViewById(R.id.layout)).removeAllViews();
         // размещаем кнопку для каждого варианта, который пользователь
         // может выбрать
-        for (int i = 0; i < story.current_situation.direction.length; i++) {
+        for (int i = 0; i < story.current_situation.direction.length;i++) {
             Button b = new Button(this);
             b.setText(Integer.toString(i + 1));
             final int buttonId = i;
@@ -86,4 +86,8 @@ public class MainActivity extends AppCompatActivity {
             ((LinearLayout) findViewById(R.id.layout)).addView(b);
         }
     }
+public void TextButtonClic(View view){
+        Toast.makeText(this , "✉\uFE0F " , Toast.LENGTH_LONG).show();
 }
+
+    }

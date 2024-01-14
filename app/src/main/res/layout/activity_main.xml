@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:onClick="TextButtonClic"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/status"
+        android:src="@android:drawable/btn_star" />
+
+    <TextView
         android:id="@+id/status"
-        />
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:background="#FFF0F0"
+        android:backgroundTint="#F8F5F5"
+        android:text="@string/status" />
+
+    <TextView
         android:id="@+id/title"
-        android:textStyle="bold"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#BDDFBB"
+        android:text="@string/title"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/description"
         android:id="@+id/desc"
         />
+
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layout"/>
+        android:orientation="horizontal" />
+
 </LinearLayout>
